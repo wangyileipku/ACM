@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+char map[500][500];
+int main()
+{
+	int t,r,c;
+	cin>>t;
+	for (int i=0;i<t;i++)
+	{
+		memset(map,0,sizeof(map));
+		cin>>r>>c;
+		for (int j=0;j<r;j++)
+			cin>>map[j];
+		int cnt=0;
+		for (int j=0;j<r;j++)
+			for (int k=0;k<c;k++)
+			{
+				if (map[j][k]==111)
+				{
+					int lefti=k-1;
+					int righti=k+1;
+					int upi=j-1;
+					int downi=j+1;
+					bool fang=false;
+					if (lefti>=0 && righti<c)
+					{
+						if (map[j][lefti]==62 && map[j][righti]==60)
+						{
+							cnt++;
+							//cout<<j<<' '<<k<<endl;
+							fang=true;
+						}
+					}
+
+					if (!fang && upi>=0 && downi<r)
+					{
+						if (map[upi][k]==118 && map[downi][k]==94)
+						{
+							cnt++;
+							//cout<<j<<' '<<k<<endl;
+							fang=true;
+						}
+					}
+				}
+			}
+			cout<<cnt<<endl;
+	}
+	return 0;
+}

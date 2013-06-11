@@ -1,0 +1,36 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+char username[1000];
+char pass[1000];
+char password[1000];
+int main()
+{
+	long long t,a,b,c,n;
+	//cout<<pow(2.0,24)<<endl;
+	while(cin>>username>>pass)
+	{
+		//cout<<username<<endl<<pass<<endl;
+		int len=strlen(pass);
+		memset(password,0,sizeof(password));
+		int cnt=0;
+		for (int i=0;i<len;i+=2)
+		{
+			int sum=0;
+			if (pass[i]>='a')
+				pass[i]-=('a'-10);
+			else
+				pass[i]-='0';
+			if (pass[i+1]>='a')
+				pass[i+1]-=('a'-10);
+			else
+				pass[i+1]-='0';
+			sum=pass[i]*16+pass[i+1];
+			password[cnt++]=sum%26+'a';
+		}
+		cout<<username<<endl;
+		cout<<password<<endl;
+		cout<<endl;
+	}
+	return 0;
+}

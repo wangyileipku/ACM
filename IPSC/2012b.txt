@@ -1,0 +1,94 @@
+#include <iostream>
+using namespace std;
+bool num[20000000];
+int cc[20000000];
+int main()
+{
+	long long t,a,b,c,n;
+	//cout<<pow(2.0,24)<<endl;
+	cin>>t;
+	for (int i=0;i<t;i++)
+	{
+		memset(cc,0,sizeof(cc));
+		cin>>a>>b>>c>>n;
+		long long maxi=-1;
+		for (int j=0;j<n;j++)
+		{
+			memset(num,0,sizeof(num));
+			//cout<<"j="<<j<<endl;
+			long long cur=j;
+			long long cnt=0;
+			long long final;
+			bool flag=false;
+			if (cc[cur]==0)
+			{
+				while(!num[cur])
+				{
+					if (cc[cur]!=0)
+						break;
+					num[cur]=true;
+					cnt++;
+					cur=(a*cur*cur+b*cur+c)%n;
+					//cout<<cur<<' ';
+				}
+
+				if (cc[cur]!=0)
+				{
+					cnt+=cc[cur];
+					flag=true;
+				}
+				final=cur;
+				//cout<<endl<<final<<' '<<cc[final]<<endl;
+
+				cc[j]=cnt;
+				cur=j;
+				int extra=0;
+				if (cur!=final)
+				{
+					int last=cur;
+					cur=(a*cur*cur+b*cur+c)%n;
+					extra++;
+
+					while(cur!=final)
+					{
+						cc[cur]=cc[last]-1;
+						last=cur;
+						extra++;
+						cur=(a*cur*cur+b*cur+c)%n;
+						//cout<<cur<<' ';
+					}
+
+				}
+				//cout<<"aha"<<endl;
+				if (!flag)
+				{
+					cc[final]=cc[j]-extra;
+					cur=(a*cur*cur+b*cur+c)%n;
+					while(cur!=final)
+					{
+						if (cc[cur]==0)
+						{
+							cc[cur]=cc[final];
+							cur=(a*cur*cur+b*cur+c)%n;
+							//cout<<cur<<' ';
+						}
+						else break;
+
+					}
+					//cout<<"aha2"<<endl;
+
+				}
+
+
+			}
+			else cnt=cc[cur];
+			//cout<<"cc["<<j<<"]="<<cc[j]<<endl;
+
+			if (cnt>maxi)
+				maxi=cnt;
+
+		}
+		cout<<maxi<<endl;
+	}
+	return 0;
+}

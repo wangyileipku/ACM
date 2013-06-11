@@ -1,0 +1,24 @@
+
+#include <vector>
+using namespace std;
+class TheExperimentDiv2
+{
+    public:
+    vector <int> determineHumidity(vector <int> intensity, int L, vector <int> leftEnd)
+    {
+        int N = intensity.size();
+        int M = leftEnd.size();
+        vector<int> ans;
+        for (int i=0;i<M;i++)
+        {
+            int res = 0;
+            for (int j=leftEnd[i];j<leftEnd[i]+L;j++)
+            {
+                res+=intensity[j];
+                intensity[j] = 0;
+            }
+            ans.push_back(res);
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,74 @@
+#include <vector>
+#include <queue>
+#include <string>
+using namespace std;
+class Node
+{
+    public:
+    int row;
+    int col;
+    Node(int r=0,int c=0)
+    {
+        row = r;
+        col = c;
+    }
+};
+bool operator < (const Node a,const Node b)
+{
+    return a.row < b.row;
+}
+class ArcadeManao
+{
+    public:
+
+    bool visited[52][52];
+    int height,width;
+    bool find(vector<string> level, int coinRow, int coinColumn, int L)
+    {
+        memset(visited,0,sizeof(visited));
+        priority_queue<Node> que;
+        que.push(Node(coinRow,coinColumn));
+        while(!que.empty())
+        {
+            Node cur = que.top();
+            que.pop();
+            int c = cur.col;
+            int r = cur.row;
+            if (visited[c][r])
+                continue;
+            visited[c][r] = true;
+            if (r == height-1)
+                return true;
+            if (c > 0 && level[r][c-1]=='X' && !visited[r][c-1])
+                que.push(Node(r,c-1));
+            if (c < width-1 && level[r][c+1]=='X' && !visited[r][c+1])
+                que.push(Node(r,c+1));
+            int start = r-L>0?r-L:0;
+            int end = r+L<height-1?r+L:height-1;
+            for (int i=start;i<=end;i++)
+            {
+                if (level[i][c]=='X' && !visited[i][c])
+                    que.push(Node(i,c));
+            }
+        }
+        return false;
+    }
+    int shortestLadder(vector<string> level, int coinRow, int coinColumn)
+    {
+        int left = 0;
+        int right = level.size();
+        height = right;
+        width = level[0].length();
+        
+        if (find(level,coinRow-1,coinColumn-1,left))
+            return left;
+        while(left<right)
+        {
+            int middle = (left+right)/2;
+            if (find(level,coinRow-1,coinColumn-1,middle))
+                right = middle;
+            else left = middle+1;
+        }
+        return right;
+    }
+};

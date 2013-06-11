@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+map<string, string> m;
+int main(){
+	string a;
+	m["minus seven"]="minus six";
+	m["two"]="three";
+	m["evil matching"]="fair coin toss";
+	m["saturn"]="uranus";
+	m["nine"]="ten";
+	m["eleven"]="twelve";
+	m["iiiiiiiiiiiiiiiiiiiiiiiiiiiii"]="iiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
+	m["ekans"]="arbok";
+	m["thirty-two"]="thirty-three";
+	m["treinta y cuatro"]="treinta y cinco";
+	m["di-di-di-di-dah dah-dah-dah-dah-dit"]="di-di-di-di-dit dah-dah-dah-dah-dah";
+	m["one-one-zero-one-one-one"]="one-one-one-zero-zero-zero";
+	m["neves-ytfif"]="thgie-ytfif";
+	m["abcdefghijklmnopqrstuxyzwv"]="abcdefghijklmnopqrstuxzvwy";
+	m["51x7y-n1n3"]="53v3n7y";
+	m["dreiundsiebzig"]="vierundsiebzig";
+	m["soixante-quatorze"]="soixante-quinze";
+	m["lxxviii"]="lxxix";
+	m["gold"]="mercury";
+	m["osemdesiatdevat"]="devatdesiat";
+	int cnt=0;
+	while(getline(cin, a)){
+		if(m.find(a)==m.end())
+			cout << atoi(a.c_str())+1 << endl;
+		else
+		{
+			cout << m[a] << endl;
+		}
+	}
+	return 0;
+}

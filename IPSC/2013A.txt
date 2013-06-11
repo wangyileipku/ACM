@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+int a[7] = {100,50,20,10,5,2,1};
+int main(){
+	int n,e,c;
+	stack<int> ans;
+	cin>>n;
+	while(n--)
+	{
+		cin>>e>>c;
+		for (int i=0;i<7;i++)
+		{
+			ans.push(e/a[i]);
+			e = e%a[i];
+		}
+		for (int i=1;i<7;i++)
+		{
+			ans.push(c/a[i]);
+			c = c%a[i];
+		}
+		while(!ans.empty())
+		{
+			int cur = ans.top();
+			ans.pop();
+			cout<<cur;
+			if (!ans.empty())
+				cout<<' ';
+			else cout<<endl;
+		}
+	}
+	return 0;
+}

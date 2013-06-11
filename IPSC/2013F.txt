@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+//F1:
+//=LLRLLLRLLLLL===L=LLRL=RL
+//=R==R===R=R=R==R====RRRLR
+
+//RLLRRLL==LLRLLLRRLRR=LRLL
+//=L====RL=LL==LR==LL=R=LR=
+
+//L=LLL=LLL==R=LL======L=L=
+//L=RLLLL===RLLLRLRLL==RLRL
+
+//R=L=LLLLLL==LL==L==LLLLRL
+//==R====L=LR===R==L==RL=RL
+
+//R==LLLRRLRLR=LL==LL==LL=R=R====LL==L===L=LL=R=R=R=
+
+//Answer: 7 H
+
+//F2:
+//0-82 83-165
+//L==R====L====RL
+
+//166-193 194-221 
+//R=LLLRLLLRL=LL=
+
+//222-249 194-221
+//=L=LR=LR===LL==
+
+//166-174 175-183
+//L=LRLLLRRLRLLLR
+
+//166-168 169-171
+//RLL==RRL=RLL=LL
+
+//169-171 172-174
+//===RRR==RR==LRL
+
+//
+
+int main(){
+	char out[251]={0};
+	cout<<"W"<<endl;
+	for (int i=0;i<15;i++)
+	{
+		int j=0;
+		for (;j<250;j++)
+			out[j]='-';
+		out[168]='L';
+		out[167]='R';
+		cout<<out<<endl;
+	}
+
+	return 0;
+}

@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+long long ans1[100002];
+long long ans2[100002];
+long long MOD = 1000000009;
+int main(){
+	ans1[0] = ans1[1] = 1;
+	for (int i=2;i<=100000;i++)
+	{
+		ans1[i] = ans1[i-1]+ans1[i-2];
+		ans1[i] %= MOD;
+	}
+	ans2[0] = ans2[1] = 1;
+	ans2[2] = ans2[0]+ans2[1];
+	ans2[3] = ans2[0]+ans2[1]+ans2[2];
+	for (int i=4;i<=100000;i++)
+	{
+		ans2[i] = ans2[i-1]+ans2[i-2]+ans2[i-3]+ans2[i-4];
+		ans2[i] %= MOD;
+	}
+	int n,t;
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		long long ans = ans1[n]*ans2[n];
+		ans %= MOD;
+		cout<<ans<<endl;
+	}
+	return 0;
+}

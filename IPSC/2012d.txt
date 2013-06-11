@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+bool num[20000000];
+int cc[20000000];
+int main()
+{
+	long long t,a,b,c,n;
+	//cout<<pow(2.0,24)<<endl;
+	cin>>t;
+	for (int i=0;i<t;i++)
+	{
+		memset(cc,0,sizeof(cc));
+		cin>>a>>b>>c>>n;
+		long long maxi=-1;
+		for (int j=0;j<n;j++)
+		{
+			long long cur=j;
+			long long cnt=0;
+			long long final;
+			bool flag=false;
+			memset(num,0,sizeof(num));
+			while(!num[cur])
+			{
+				num[cur]=true;
+				cnt++;
+				cur=(a*cur*cur+b*cur+c)%n;
+				//cout<<cur<<' ';
+			}
+
+			if (cnt>maxi)
+				maxi=cnt;
+
+		}
+		cout<<maxi<<endl;
+	}
+	return 0;
+}

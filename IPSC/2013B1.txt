@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+
+int main(){
+	int t;
+	long long n,y,z;
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		queue<long long> que;
+		que.push(n);
+		long long sum = 0;
+		while(!que.empty())
+		{
+			long long cur = que.front();
+			que.pop();
+			if (cur%3==0)
+			{
+				y = cur/3;
+				z = cur-y;
+			}
+			else if (cur%2==0)
+			{
+				y = cur/2;
+				z = cur-y;
+			}
+			else
+			{
+				y = 1;
+				z = cur-y;
+			}
+			sum+=y*z;
+			if (y!=1)
+				que.push(y);
+			if (z!=1)
+				que.push(z);
+		}
+		cout<<sum<<endl;
+	}
+	return 0;
+}

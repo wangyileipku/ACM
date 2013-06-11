@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+long long ans[10000001];
+int main(){
+	ans[1] = 0;
+	for (int i=2;i<=10000000;i++)
+	{
+		ans[i]=0;
+		int pos;
+		
+			long long y = i/2;
+			long long z = i-y;
+		ans[i]=y*z+ans[y]+ans[z];
+	}
+	//cout<<ans[775980]<<endl;
+	int t;
+	long long n,y,z;
+	cin>>t;
+	//t=0;
+	while(t--)
+	{
+		cin>>n;
+		if (n<=10000000)
+		{
+			cout<<ans[n]<<endl;
+			continue;
+		}
+		queue<long long> que;
+		que.push(n);
+		long long sum = 0;
+		while(!que.empty())
+		{
+			long long cur = que.front();
+			que.pop();
+			if (cur==1)
+			{
+				sum = 0;
+				break;
+			}
+			y = cur/2;
+			z = cur-y;
+			sum+=y*z;
+			//cout<<sum<<' '<<ans[y]<<' '<<ans[z]<<endl;
+			if (y<=10000000)
+				sum+=ans[y];
+			else que.push(y);
+			if (z<=10000000)
+				sum+=ans[z];
+			else que.push(z);
+		}
+		cout<<sum<<endl;
+	}
+	return 0;
+}

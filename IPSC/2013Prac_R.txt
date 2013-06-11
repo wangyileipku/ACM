@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <stdio.h>
+#include <utility>
+#include <algorithm>
+#include <set>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <map>
+#include <list>
+#include <iomanip>
+using namespace std;
+int main(){
+	string s1="abcdefghijklmnopqrstuvwxyz";
+	string s2="bcdefghijklmnopqrstuvwxy";
+	string s3="zbcdefghijklmnopqrstuvwx";
+	string s4="ybcdefghijklmnopqrstuvwz";
+	string s5="xbcdefghijklmnopqrstuvwy";
+	string s6="ybcdefghijklmnopqrstuvwxz";
+	string ans = s1;
+	ans += 'a';
+	ans += s2;
+	for (int i=0;i<7;i++)
+	{
+		ans+='a';
+		ans+=s3;
+		ans+='a';
+		ans+=s4;
+		ans+='a';
+		ans+=s5;
+	}
+		ans+='a';
+		ans+=s3;
+		ans+='a';
+		ans+=s6;
+		ans+='a';
+
+	cout<<ans<<endl;
+	return 0;
+}
